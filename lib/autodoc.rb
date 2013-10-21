@@ -17,7 +17,7 @@ end
 
 if ENV["AUTODOC"] && defined?(RSpec)
   RSpec.configure do |config|
-    config.after(:each, type: :request) do
+    config.after(:each, type: :controller) do
       if example.metadata[:autodoc]
         Autodoc.collector.collect(example, request, response)
       end
@@ -25,7 +25,7 @@ if ENV["AUTODOC"] && defined?(RSpec)
 
     config.after(:suite) do
       Autodoc.collector.documents.each do |filepath, documents|
-        filepath = filepath.gsub("./spec/requests/", "").gsub("_spec.rb", ".md")
+        filepath = filepath.gsub("./spec/controllers/", "").gsub("_spec.rb", ".md")
         pathname = Rails.root.join("doc")
         pathname += ENV["AUTODOC"] if ENV["AUTODOC"] != "1"
         pathname += filepath
