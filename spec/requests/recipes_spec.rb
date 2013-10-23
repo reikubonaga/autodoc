@@ -29,9 +29,9 @@ describe "Recipes" do
         params[:type] = "x"
       end
 
-      it "returns 400" do
+      it "returns 422" do
         post "/recipes", params, env
-        response.status.should == 400
+        response.status.should == 422
       end
     end
 

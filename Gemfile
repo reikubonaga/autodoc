@@ -7,5 +7,5 @@ group :test do
   gem 'rails', '3.2.13'
   gem "pry-rails"
   gem "rspec-rails"
-  gem "weak_parameters"
+  gem "strong_parameters"
 end
